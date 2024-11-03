@@ -70,9 +70,9 @@ air_conditioning_ctrl = ctrl.ControlSystem([rule1, rule2, rule3])
 # Desfuzzification
 ########################
 result = ctrl.ControlSystemSimulation(air_conditioning_ctrl)
-result.input['outside_temperature'] = 6.5
-result.input['penguins_number'] = 9.8
-result.input['biologic_temperature'] = 20
+result.input['outside_temperature'] = int(input("outside temperature Cº [-10, 50]: "))
+result.input['penguins_number'] = int(input("Penguins number: "))
+result.input['biologic_temperature'] = int(input("Biologic Temperature [-10, 50]:"))
 
 # Crunch the numbers
 result.compute()
@@ -82,5 +82,5 @@ filename = f"{folder}/air_conditioning.png"
 plt.savefig(filename)
 plt.close()
 
-print(round(result.output['air_conditioning'], 2))
-
+print("====== RESULT =======")
+print("Air conditioning Temperatura: " + str(round(result.output['air_conditioning'], 2)))
